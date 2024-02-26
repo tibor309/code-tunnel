@@ -59,7 +59,7 @@ This container is based on the linuxserver.io ubuntu base image, so you can use 
 | `--hostname vscode` | Hostname for the container. |
 
 ## Usage
-After logging in, navigate to the [vscode.dev][dev] link that you can find in the container logs. Alternatively, you can connect via the VSCode desktop app too.
+After logging in, navigate to the [vscode.dev/tunnel/your-tunnel-name][dev] link that you can find in the container logs. Alternatively, you can connect via the VSCode desktop app too.
 
 
 [dcompose]: https://docs.linuxserver.io/general/docker-compose
