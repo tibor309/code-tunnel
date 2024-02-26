@@ -2,14 +2,14 @@
 This container allows you to set up a code server, and connect to it trough vscode tunnel.
 
 ## Setup
-To setup the container, you can use the docker cli, or docker compose.
+To setup the container, you can use the docker cli, or docker compose. For arm, use the `arm64v8-latest` tag.
 
 ### [docker-compose][dcompose] (recommended)
 ```yaml
 ---
 services:
   code-tunnel:
-    image: tibor309/docker-code-tunnel:latest
+    image: tibor309/docker-code-tunnel:amd64-latest
     container_name: code-tunnel
     environment:
       - PUID=1000
@@ -35,10 +35,11 @@ docker run -d \
   -v /path/to/config:/config \
   --restart unless-stopped \
   --hostname vscode `#optional` \
-  tibor309/docker-code-tunnel:latest
+  tibor309/docker-code-tunnel:amd64-latest
 ```
 
-After setting up the container, check for your github login code in the container logs. *(Also ignore the s6-notifyoncheck spam in the logs, im working on a fix.)*
+After setting up the container, check for your github login code in the container logs.
+*(Also ignore the s6-notifyoncheck spam in the logs, im working on a fix.)*
 
 ```bash
 docker logs code-tunnel
