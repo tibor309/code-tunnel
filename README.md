@@ -2,14 +2,14 @@
 This container allows you to set up a code server, and connect to it trough vscode tunnel.
 
 ## Setup
-To setup the container, you can use the docker cli, or docker compose.
+To setup the container, you can use the docker cli, or docker compose. For arm, use the `arm64v8-latest` tag.
 
 ### [docker-compose][dcompose] (recommended)
 ```yaml
 ---
 services:
   code-tunnel:
-    image: tibor309/docker-code-tunnel:latest
+    image: tibor309/code-tunnel:amd64v8-latest
     container_name: code-tunnel
     environment:
       - PUID=1000
@@ -35,10 +35,11 @@ docker run -d \
   -v /path/to/config:/config \
   --restart unless-stopped \
   --hostname vscode `#optional` \
-  tibor309/docker-code-tunnel:latest
+  tibor309/code-tunnel:amd64v8-latest
 ```
 
-After setting up the container, check for your github login code in the container logs. *(Also ignore the s6-notifyoncheck spam in the logs, im working on a fix.)*
+After setting up the container, check for your github login code in the container logs.
+*(Also ignore the s6-notifyoncheck spam in the logs, im working on a fix.)*
 
 ```bash
 docker logs code-tunnel
@@ -59,8 +60,9 @@ This container is based on the linuxserver.io ubuntu base image, so you can use 
 | `--hostname vscode` | Hostname for the container. |
 
 ## Usage
-After logging in, navigate to the [vscode.dev/tunnel/your-tunnel-name][dev] link that you can find in the container logs. Alternatively, you can connect via the VSCode desktop app too.
+To access the container, navigate to the [vscode.dev][dev] link that you can find in the container logs, or manually. Alternatively, you can connect via the VSCode desktop app too.
 
+* [https://vscode.dev/tunnel/your-tunnel-name][link]
 
 [dcompose]: https://docs.linuxserver.io/general/docker-compose
 [dcli]: https://docs.docker.com/engine/reference/commandline/cli/

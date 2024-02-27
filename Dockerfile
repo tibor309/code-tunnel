@@ -7,7 +7,6 @@ LABEL maintainer="tibor309"
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV HOME="/config"
 ENV MACHINE_NAME="code-tunnel"
-ENV RELEASE="stable"
 
 RUN \
   echo "**** install runtime dependencies ****" && \
@@ -26,7 +25,7 @@ RUN \
   mkdir -p /app/vscode_cli && \
   curl -o \
     /tmp/vscode_cli.tar.gz -L \
-    "https://code.visualstudio.com/sha/download?build=${RELEASE}&os=cli-alpine-x64" && \
+    "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
   tar -xf /tmp/vscode_cli.tar.gz -C \
     /app/vscode_cli && \
   echo "**** clean up ****" && \

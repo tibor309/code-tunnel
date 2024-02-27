@@ -1,4 +1,4 @@
-name: "Build and publish Docker image with tag: latest"
+name: "Build-push docker image for latest"
 on:
   [workflow_dispatch]
 
@@ -25,7 +25,7 @@ jobs:
           platforms: linux/amd64
           file: ./Dockerfile
           push: true
-          tags: tibor309/docker-code-tunnel:latest
+          tags: tibor309/code-tunnel:amd64-latest
       
       - name: Build and push image for aarch64
         uses: docker/build-push-action@v5
@@ -34,4 +34,4 @@ jobs:
           platforms: linux/arm64
           file: ./Dockerfile.aarch64
           push: true
-          tags: tibor309/docker-code-tunnel:latest
+          tags: tibor309/code-tunnel:arm64v8-latest
