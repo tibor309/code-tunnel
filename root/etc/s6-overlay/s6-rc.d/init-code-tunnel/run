@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p /config/{extensions,data,workspace,.ssh}
+mkdir -p /config/{data,workspace,.ssh}
 
 if [ -n "${SUDO_PASSWORD}" ] || [ -n "${SUDO_PASSWORD_HASH}" ]; then
     echo "setting up sudo access"
