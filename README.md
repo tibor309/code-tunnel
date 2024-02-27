@@ -9,7 +9,7 @@ To setup the container, you can use the docker cli, or docker compose. For arm, 
 ---
 services:
   code-tunnel:
-    image: tibor309/code-tunnel:amd64-latest
+    image: tibor309/code-tunnel:amd64v8-latest
     container_name: code-tunnel
     environment:
       - PUID=1000
@@ -35,7 +35,7 @@ docker run -d \
   -v /path/to/config:/config \
   --restart unless-stopped \
   --hostname vscode `#optional` \
-  tibor309/code-tunnel:amd64-latest
+  tibor309/code-tunnel:amd64v8-latest
 ```
 
 After setting up the container, check for your github login code in the container logs.
