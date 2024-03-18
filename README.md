@@ -9,7 +9,7 @@ To setup the container, you can use the docker cli, or docker compose. For arm, 
 ---
 services:
   code-tunnel:
-    image: tibor309/code-tunnel:amd64v8-latest
+    image: tibor309/code-tunnel:amd64-latest
     container_name: code-tunnel
     environment:
       - PUID=1000
@@ -35,7 +35,7 @@ docker run -d \
   -v /path/to/config:/config \
   --restart unless-stopped \
   --hostname vscode `#optional` \
-  tibor309/code-tunnel:amd64v8-latest
+  tibor309/code-tunnel:amd64-latest
 ```
 
 After setting up the container, check for your github login code in the container logs.
@@ -60,7 +60,7 @@ This container is based on the linuxserver.io ubuntu base image, so you can use 
 | `--hostname vscode` | Hostname for the container. |
 
 ## Usage
-To access the container, navigate to the [vscode.dev][dev] link that you can find in the container logs, or manually. Alternatively, you can connect via the VSCode desktop app too.
+To access the container, navigate to the [vscode.dev][link] link that you can find in the container logs, or manually. Alternatively, you can connect via the VSCode desktop app too.
 
 * [https://vscode.dev/tunnel/your-tunnel-name][link]
 
@@ -69,4 +69,4 @@ To access the container, navigate to the [vscode.dev][dev] link that you can fin
 [tz]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 
 [repo]: https://github.com/tibor309/docker-code-tunnel
-[dev]: https://vscode.dev
+[link]: https://vscode.dev
