@@ -2,6 +2,8 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy
 
 # set labels
 LABEL maintainer="tibor309"
+LABEL org.opencontainers.image.source=https://github.com/tibor309/code-tunnel
+LABEL org.opencontainers.image.licenses=GPL-3.0
 
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
