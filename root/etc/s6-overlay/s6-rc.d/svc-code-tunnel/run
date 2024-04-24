@@ -6,4 +6,4 @@ exec \
             /app/vscode_cli/code tunnel \
                 --accept-server-license-terms \
                 --cli-data-dir /config/data \
-                --name "${MACHINE_NAME}"
+                --name "${TUNNEL_NAME}"

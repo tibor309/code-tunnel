@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.licenses=GPL-3.0
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV HOME="/config"
-ENV MACHINE_NAME="code-tunnel"
+ENV TUNNEL_NAME="code-tunnel"
 
 RUN \
   echo "**** install runtime dependencies ****" && \
