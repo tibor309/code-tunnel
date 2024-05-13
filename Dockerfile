@@ -30,7 +30,7 @@ RUN \
     sudo && \
   echo "**** install vscode-cli ****" && \
   mkdir -p /app/vscode_cli && \
-  curl -o \
+  curl --cipher ALL -o \
     /tmp/vscode_cli.tar.gz -L \
     "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
   tar -xf /tmp/vscode_cli.tar.gz -C \
