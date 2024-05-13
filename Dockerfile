@@ -25,6 +25,7 @@ RUN \
     libatomic1 \
     nano \
     net-tools \
+    netcat-traditional \
     curl \
     sudo && \
   echo "**** install vscode-cli ****" && \
