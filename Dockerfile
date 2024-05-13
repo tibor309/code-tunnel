@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:noble
+FROM ghcr.io/linuxserver/baseimage-ubuntu:jammy
 
 # set labels
 ARG BUILD_DATE
@@ -25,7 +25,7 @@ RUN \
     libatomic1 \
     nano \
     net-tools \
-    netcat-traditional \
+    netcat \
     curl \
     sudo && \
   echo "**** install vscode-cli ****" && \
