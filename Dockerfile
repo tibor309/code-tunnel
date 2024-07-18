@@ -5,7 +5,7 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version: ${VERSION} Build-date: ${BUILD_DATE}"
 LABEL maintainer="tibor309"
-LABEL org.opencontainers.image.description="Remote vscode server, accessible trough tunnels."
+LABEL org.opencontainers.image.description="VSCode Tunnel inside a docker container."
 LABEL org.opencontainers.image.source=https://github.com/tibor309/code-tunnel
 LABEL org.opencontainers.image.url=https://github.com/tibor309/code-tunnel/packages
 LABEL org.opencontainers.image.licenses=GPL-3.0
