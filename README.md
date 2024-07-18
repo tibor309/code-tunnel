@@ -1,5 +1,5 @@
 # ⌨️ Code Tunnel
-This container allows you to set up a code server, and connect to it trough vscode tunnel.
+VSCode Tunnel running inside a docker container.
 
 ## Setup
 To setup the container, you can use the docker cli, or docker compose.
