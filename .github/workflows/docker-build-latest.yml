@@ -30,7 +30,7 @@ jobs:
           file: ./Dockerfile
           push: true
           provenance: false
-          tags: ghcr.io/${{ github.repository_owner }}/${{ secrets.TESTING_ENV }}:amd64-latest
+          tags: ghcr.io/${{ github.repository_owner }}/${{ secrets.DEV_REPO }}:latest-amd64
       
       - name: Build and push image for arm64
         uses: docker/build-push-action@v5
@@ -40,14 +40,14 @@ jobs:
           file: ./Dockerfile.aarch64
           push: true
           provenance: false
-          tags: ghcr.io/${{ github.repository_owner }}/${{ secrets.TESTING_ENV }}:arm64-latest
+          tags: ghcr.io/${{ github.repository_owner }}/${{ secrets.DEV_REPO }}:latest-arm64
 
       - name: Create image manifest with latest tag
         run: |
-          docker manifest create ghcr.io/${{ github.repository }}:latest \
-            --amend ghcr.io/${{ github.repository_owner }}/${{ secrets.TESTING_ENV }}:amd64-latest \
-            --amend ghcr.io/${{ github.repository_owner }}/${{ secrets.TESTING_ENV }}:arm64-latest
+          docker manifest create ghcr.io/${{ github.repository_owner }}/code-tunnel:latest \
+            --amend ghcr.io/${{ github.repository_owner }}/${{ secrets.DEV_REPO }}:latest-amd64 \
+            --amend ghcr.io/${{ github.repository_owner }}/${{ secrets.DEV_REPO }}:latest-arm64
 
       - name: Push image manifest
         run: |
-          docker manifest push ghcr.io/${{ github.repository }}:latest
+          docker manifest push ghcr.io/${{ github.repository_owner }}/code-tunnel:latest
