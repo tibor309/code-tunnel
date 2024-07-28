@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-noble
+FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-jammy
 
 # set labels
 ARG BUILD_DATE
@@ -12,6 +12,7 @@ LABEL org.opencontainers.image.licenses=GPL-3.0
 
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
+ENV HOME="/config"
 ENV TUNNEL_NAME="code-tunnel"
 
 RUN \
@@ -19,11 +20,12 @@ RUN \
   apt-get update && \
   apt-get install -y \
     git \
+    gh \
     jq \
     libatomic1 \
     nano \
     net-tools \
-    netcat-traditional \
+    netcat \
     curl \
     sudo && \
   echo "**** install vscode-cli ****" && \
