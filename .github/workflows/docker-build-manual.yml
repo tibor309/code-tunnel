@@ -1,7 +1,6 @@
-name: "Build image for latest"
+name: "Build and push docker image to latest"
 on:
-  schedule:
-    - cron: "0 1 1 * *"
+  [workflow_dispatch]
 
 jobs:
   Build:
