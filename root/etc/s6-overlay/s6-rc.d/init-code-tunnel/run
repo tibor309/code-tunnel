@@ -1,14 +1,15 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 mkdir -p /config/{data,workspace,.ssh}
 
-if [ -n "${SUDO_PASSWORD}" ] || [ -n "${SUDO_PASSWORD_HASH}" ]; then
+if [[ -n "${SUDO_PASSWORD}" ]] || [[ -n "${SUDO_PASSWORD_HASH}" ]]; then
     echo "setting up sudo access"
     if ! grep -q 'abc' /etc/sudoers; then
         echo "adding abc to sudoers"
         echo "abc ALL=(ALL:ALL) ALL" >> /etc/sudoers
     fi
-    if [ -n "${SUDO_PASSWORD_HASH}" ]; then
+    if [[ -n "${SUDO_PASSWORD_HASH}" ]]; then
         echo "setting sudo password using sudo password hash"
         sed -i "s|^abc:\!:|abc:${SUDO_PASSWORD_HASH}:|" /etc/shadow
     else
