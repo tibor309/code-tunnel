@@ -24,13 +24,13 @@ RUN \
     libatomic1 \
     nano \
     net-tools \
-    curl \
+    wget \
     sudo && \
   echo "**** install vscode-cli ****" && \
   mkdir -p /app/vscode_cli && \
-  curl --cipher ALL -o \
-    /tmp/vscode_cli.tar.gz -L \
-    "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
+  wget -vO \
+    /tmp/vscode_cli.tar.gz \
+    "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-arm64" && \
   tar -xf /tmp/vscode_cli.tar.gz -C \
     /app/vscode_cli && \
   echo "**** clean up ****" && \
