@@ -1,10 +1,10 @@
-name: "Build image for latest"
+name: "Scheduled build - latest"
 on:
   schedule:
     - cron: "0 1 1 * *"
 
 jobs:
-  Build:
+  rebuild-latest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
