@@ -30,7 +30,7 @@ RUN \
   mkdir -p /app/vscode_cli && \
   wget -vO \
     /tmp/vscode_cli.tar.gz \
-    "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-arm64" && \
+    "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
   tar -xf /tmp/vscode_cli.tar.gz -C \
     /app/vscode_cli && \
   echo "**** clean up ****" && \
