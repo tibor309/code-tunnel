@@ -1,11 +1,32 @@
-name: "Scheduled build - latest"
+name: "Scheduled build"
 on:
   schedule:
     - cron: "0 1 1 * *"
 
 jobs:
-  rebuild-latest:
+  get-version:
     runs-on: ubuntu-latest
+    outputs:
+      PKG_VER: ${{ steps.getver.outputs.PKG_VER }}
+    steps:
+      - name: Download package
+        run: |
+          wget -vO vscode_cli.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64"
+
+      - name: Extract package
+        run: |
+          tar -xvf vscode_cli.tar.gz
+
+      - name: Get package version
+        id: getver
+        run: |
+          PKG_VER=$(./code --version | awk '{print $2}')
+          echo "PKG_VER=${PKG_VER}" >> $GITHUB_OUTPUT
+          echo "The package version is $PKG_VER"
+
+  rebuild:
+    runs-on: ubuntu-latest
+    needs: get-version
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,7 +52,7 @@ jobs:
           file: ./Dockerfile
           push: true
           provenance: false
-          tags: ghcr.io/tibor309/${{ secrets.DEV_REPO }}:latest-amd64
+          tags: ghcr.io/tibor309/${{ secrets.DEV_REPO }}:${{ needs.get-version.outputs.PKG_VER }}-amd64
       
       - name: Build image for arm64
         uses: docker/build-push-action@v5
@@ -41,14 +62,21 @@ jobs:
           file: ./Dockerfile.aarch64
           push: true
           provenance: false
-          tags: ghcr.io/tibor309/${{ secrets.DEV_REPO }}:latest-arm64
+          tags: ghcr.io/tibor309/${{ secrets.DEV_REPO }}:${{ needs.get-version.outputs.PKG_VER }}-arm64
+
+      - name: Create image manifest with version tag
+        run: |
+          docker manifest create ghcr.io/tibor309/code-tunnel:${{ needs.get-version.outputs.PKG_VER }} \
+            --amend ghcr.io/tibor309/${{ secrets.DEV_REPO }}:${{ needs.get-version.outputs.PKG_VER }}-amd64 \
+            --amend ghcr.io/tibor309/${{ secrets.DEV_REPO }}:${{ needs.get-version.outputs.PKG_VER }}-arm64
 
       - name: Create image manifest with latest tag
         run: |
           docker manifest create ghcr.io/tibor309/code-tunnel:latest \
-            --amend ghcr.io/tibor309/${{ secrets.DEV_REPO }}:latest-amd64 \
-            --amend ghcr.io/tibor309/${{ secrets.DEV_REPO }}:latest-arm64
-
-      - name: Push image manifest
+            --amend ghcr.io/tibor309/${{ secrets.DEV_REPO }}:${{ needs.get-version.outputs.PKG_VER }}-amd64 \
+            --amend ghcr.io/tibor309/${{ secrets.DEV_REPO }}:${{ needs.get-version.outputs.PKG_VER }}-arm64
+    
+      - name: Push image manifests
         run: |
           docker manifest push ghcr.io/tibor309/code-tunnel:latest
+          docker manifest push ghcr.io/tibor309/code-tunnel:${{ needs.get-version.outputs.PKG_VER }}
