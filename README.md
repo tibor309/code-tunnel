@@ -44,8 +44,6 @@ After setting up the container, check for your github login code in the containe
 docker logs code-tunnel
 ```
 
-*(Also ignore the s6-notifyoncheck spam in the logs.)*
-
 ## Config
 This container is based on the linuxserver.io ubuntu base image, so you can use their mods and additional configs if you want.
 
