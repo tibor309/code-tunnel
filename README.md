@@ -1,5 +1,7 @@
 # ⌨️ Code Tunnel
-VSCode Tunnel running inside a docker container.
+VSCode Tunnel inside a docker container.
+
+![code](https://github.com/user-attachments/assets/dc9b2f18-08a4-4202-9e21-34f45e4bf3f0)
 
 ## Setup
 To setup the container, you can use the docker cli, or docker compose.
@@ -54,7 +56,7 @@ This container is based on the linuxserver.io ubuntu base image, so you can use 
 | `-e TZ=Etc/UTC` | Specify a timezone to use, see this [list][tz]. |
 | `-e SUDO_PASSWORD=password` | If this optional variable is set, user will have sudo access in the terminal with the specified password. |
 | `-e SUDO_PASSWORD_HASH=` | Optionally set sudo password via hash (takes priority over SUDO_PASSWORD var). Format is $type$salt$hashed. |
-| `-e TUNNEL_NAME=the-dungeon` | Name of the vscode tunnel. |
+| `-e TUNNEL_NAME=the-dungeon` | The name of the tunnel. |
 | `-v /config` | Users home directory in the container, stores local files and settings. |
 | `--hostname vscode` | Hostname for the container. |
 
