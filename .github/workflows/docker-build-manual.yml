@@ -60,7 +60,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build image for amd64
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64
@@ -73,7 +73,7 @@ jobs:
             ghcr.io/tibor309/${{ secrets.DEV_REPO }}:${{ needs.get-version.outputs.PKG_VER }}-amd64
       
       - name: Build image for arm64
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/arm64
