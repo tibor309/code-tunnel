@@ -1,10 +1,21 @@
-# ⌨️ Code Tunnel
+[repo]: https://github.com/tibor309/code-tunnel
+[dhub]: https://hub.docker.com/r/tibordev/code-tunnel
+[dcompose]: https://docs.linuxserver.io/general/docker-compose
+[dcli]: https://docs.docker.com/engine/reference/commandline/cli/
+[tz]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+[link]: https://vscode.dev
+
+
+# ⌨️ [VSCode Tunnel][repo]
 VSCode Tunnel inside a docker container.
 
 ![code](https://github.com/user-attachments/assets/dc9b2f18-08a4-4202-9e21-34f45e4bf3f0)
 
 ## Setup
 To setup the container, you can use the docker cli, or docker compose.
+
+> [!NOTE]
+> This image is now available on [Docker Hub][dhub] under `tibordev/code-tunnel`.
 
 ### [docker-compose][dcompose] (recommended)
 ```yaml
@@ -64,8 +75,3 @@ This container is based on the linuxserver.io ubuntu base image, so you can use 
 To access the container, navigate to the [vscode.dev][link] link that you can find in the container logs, or manually. Alternatively, you can connect via the VSCode desktop app too.
 
 * [https://vscode.dev/tunnel/your-tunnel-name][link]
-
-[dcompose]: https://docs.linuxserver.io/general/docker-compose
-[dcli]: https://docs.docker.com/engine/reference/commandline/cli/
-[tz]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
-[link]: https://vscode.dev
