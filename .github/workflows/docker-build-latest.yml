@@ -1,5 +1,5 @@
 name: "Build Docker image for stable channel"
-description: "Builds the Docker image for the stable channel and pushes it to GitHub Container Registry and Docker Hub."
+description: "Builds the Docker image for the stable channel and pushes it to GitHub Container Registry and Docker Hub. This workflow is triggered on the first day of each month at 01:00 UTC."
 on:
   schedule:
     - cron: "0 1 1 * *"
