@@ -1,21 +1,28 @@
+[vscode]: https://code.visualstudio.com/
 [repo]: https://github.com/tibor309/code-tunnel
+
 [dhub]: https://hub.docker.com/r/tibordev/code-tunnel
 [dcompose]: https://docs.linuxserver.io/general/docker-compose
 [dcli]: https://docs.docker.com/engine/reference/commandline/cli/
 [tz]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 [link]: https://vscode.dev
 
+[lsmods]: https://github.com/linuxserver/docker-mods
+[lsmods-list]: https://mods.linuxserver.io/
+[lsupi]: https://github.com/linuxserver/docker-mods/tree/universal-package-install
+[lsdnd]: https://github.com/linuxserver/docker-mods/tree/universal-docker-in-docker
 
-# ⌨️ [VSCode Tunnel][repo]
-VSCode Tunnel inside a docker container.
+
+# ⌨️ [VS Code Tunnel][repo]
+VS Code Tunnel inside a Docker container. VS Code, or [Visual Studio Code][vscode], is an integrated development environment developed by Microsoft. This container allows you to create a secure development environment using Docker that you can access via VS Code's Remote Tunnels.
 
 ![code](https://github.com/user-attachments/assets/dc9b2f18-08a4-4202-9e21-34f45e4bf3f0)
 
 ## Setup
-To setup the container, you can use the docker cli, or docker compose.
+To set up the container, you can use docker-compose or the docker cli. Unless a parameter is flagged as 'optional', it is *mandatory* and a value must be provided. This container is using a linuxserver.io base, so you can use their [mods][lsmods] and configurations to enable additional functionality within the container.
 
 > [!NOTE]
-> This image is now available on [Docker Hub][dhub] under `tibordev/code-tunnel`.
+> This image is also available on [Docker Hub][dhub] under `tibordev/code-tunnel`.
 
 ### [docker-compose][dcompose] (recommended)
 ```yaml
@@ -51,14 +58,17 @@ docker run -d \
   ghcr.io/tibor309/code-tunnel:latest
 ```
 
-After setting up the container, check for your github login code in the container logs.
+After setting up the container, check your container logs for your GitHub login code. Depending on what and how many mods you have installed, it might take a few minutes before the tunnel is started. The login code expires every 10 minutes.
 
 ```bash
 docker logs code-tunnel
 ```
 
+## Security
+This container can be accessed with Visual Studio Code's Remote Tunnels feature and a GitHub account. Unless you deploy this container in an insecure environment, it should be safe. Exposed ports in the container will go through Microsoft's reverse proxy to be accessible on the internet.
+
 ## Config
-This container is based on the linuxserver.io ubuntu base image, so you can use their mods and additional configs if you want.
+Containers are configured using parameters passed at runtime (such as those above). Use these parameters to customize your deployment.
 
 | Parameter | Function |
 | :----: | --- |
@@ -71,7 +81,13 @@ This container is based on the linuxserver.io ubuntu base image, so you can use 
 | `-v /config` | Users home directory in the container, stores local files and settings. |
 | `--hostname vscode` | Hostname for the container. |
 
+## Mods
+As mentioned before, this container is using a linuxserver.io base. You can use their mods to further customize your environment. With [universal package install][lsupi] you can install packages like rsync and Nginx or set up a [docker-in-docker][lsdnd] environment for isolated container development. Many Docker mods that are universal or made for code-tunnel can be used with this container. You can check out [this page][lsmods-list] for a list of mods.
+
+## Updating
+This image is updated monthly. To update the app, you'll need to pull the latest image and redeploy the container with your configuration. It's **not** recommended to update the app inside the container. Updating this way could cause issues with configurations and mods. If you get an update notification, you should ignore it and update the container manually.
+
 ## Usage
-To access the container, navigate to the [vscode.dev][link] link that you can find in the container logs, or manually. Alternatively, you can connect via the VSCode desktop app too.
+To connect to the container, open Visual Studio Code and install the `Remote Tunnels` extension. Then run the `Remote - Tunnels: Connect to Tunnel....` command. You can find the command by pressing `F1` to open the Command Palette or by clicking on the remote indicator in the lower left corner. You'll be prompted to log into GitHub and will get a list of available tunnels to connect to. Furthermore, you can also connect to the tunnel via web using the link with your tunnel name.
 
 * [https://vscode.dev/tunnel/your-tunnel-name][link]
