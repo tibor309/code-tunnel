@@ -15,10 +15,14 @@ LABEL org.opencontainers.image.documentation="https://github.com/tibor309/code-t
 LABEL org.opencontainers.image.base.name="ghcr.io/linuxserver/baseimage-ubuntu:noble"
 LABEL org.opencontainers.image.base.documentation="https://github.com/linuxserver/docker-baseimage-ubuntu/blob/master/README.md"
 
+# branding
+ENV LSIO_FIRST_PARTY=false
+
+# set default tunnel name
+ENV TUNNEL_NAME="code-tunnel"
+
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
-ENV HOME="/config"
-ENV TUNNEL_NAME="code-tunnel"
 
 RUN \
   echo "**** install runtime dependencies ****" && \
@@ -44,10 +48,10 @@ RUN \
   echo "**** clean up ****" && \
   apt-get clean && \
   rm -rf \
-    /config/* \
-    /tmp/* \
+    /config/.cache \
     /var/lib/apt/lists/* \
-    /var/tmp/*
+    /var/tmp/* \
+    /tmp/*
 
 # add local files
 COPY /root /
