@@ -3,14 +3,17 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:noble
 # set labels
 ARG IMAGE_BUILD_DATE
 LABEL maintainer="tibor309"
-LABEL org.opencontainers.image.authors="tibor309"
+LABEL release_channel="stable"
+LABEL org.opencontainers.image.authors="Tibor (https://github.com/tibor309)"
 LABEL org.opencontainers.image.created="${IMAGE_BUILD_DATE}"
-LABEL org.opencontainers.image.title="VSCode Tunnel"
-LABEL org.opencontainers.image.description="VSCode Tunnel inside a docker container."
-LABEL org.opencontainers.image.source=https://github.com/tibor309/code-tunnel
-LABEL org.opencontainers.image.url=https://github.com/tibor309/code-tunnel/packages
-LABEL org.opencontainers.image.licenses=GPL-3.0
+LABEL org.opencontainers.image.title="VS Code Tunnel"
+LABEL org.opencontainers.image.description="VS Code Tunnel inside a Docker container."
+LABEL org.opencontainers.image.source="https://github.com/tibor309/code-tunnel"
+LABEL org.opencontainers.image.url="https://github.com/tibor309/code-tunnel/packages"
+LABEL org.opencontainers.image.licenses="GPL-3.0"
+LABEL org.opencontainers.image.documentation="https://github.com/tibor309/code-tunnel/blob/main/README.md"
 LABEL org.opencontainers.image.base.name="ghcr.io/linuxserver/baseimage-ubuntu:noble"
+LABEL org.opencontainers.image.base.documentation="https://github.com/linuxserver/docker-baseimage-ubuntu/blob/master/README.md"
 
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
