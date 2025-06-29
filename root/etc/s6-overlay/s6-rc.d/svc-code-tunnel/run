@@ -3,7 +3,7 @@
 exec \
     s6-notifyoncheck -d -n 1 -w 1000 \
         s6-setuidgid abc \
-            /app/vscode_cli/code tunnel \
+            /usr/bin/code tunnel \
                 --accept-server-license-terms \
                 --cli-data-dir /config/data \
                 --name "${TUNNEL_NAME}"

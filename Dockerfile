@@ -26,15 +26,18 @@ RUN \
     libatomic1 \
     nano \
     net-tools \
-    wget \
+    curl \
     sudo && \
-  echo "**** install vscode-cli ****" && \
-  mkdir -p /app/vscode_cli && \
-  wget -vO \
-    /tmp/vscode_cli.tar.gz \
-    "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" && \
-  tar -xf /tmp/vscode_cli.tar.gz -C \
-    /app/vscode_cli && \
+  echo "**** install packages ****" && \
+  curl -vSLo \
+    /etc/apt/keyrings/packages.microsoft.asc \
+    https://packages.microsoft.com/keys/microsoft.asc && \
+  echo \
+    "deb [signed-by=/etc/apt/keyrings/packages.microsoft.asc] https://packages.microsoft.com/repos/code stable main" \
+    > /etc/apt/sources.list.d/microsoft.list && \
+  apt-get update -y && \
+  apt-get install --no-install-recommends -y \
+    code && \
   echo "**** clean up ****" && \
   apt-get clean && \
   rm -rf \
