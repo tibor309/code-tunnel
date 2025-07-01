@@ -1,40 +1,36 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-in-docker
 {
-	"name": "Code Tunnel",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"name": "VS Code Tunnel",
+	"image": "mcr.microsoft.com/devcontainers/base:noble-ubuntu",
+    "privileged": true,
 
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"azureDnsAutoDetection": true,
+			"installDockerBuildx": true,
+			"installDockerComposeSwitch": true,
 			"version": "latest",
-			"enableNonRootDocker": "true",
-			"moby": "true"
+			"dockerDashComposeVersion": "latest"
 		},
 		"ghcr.io/devcontainers/features/github-cli:1": {
 			"installDirectlyFromGitHubRelease": true,
 			"version": "latest"
 		},
-		"ghcr.io/dhoeric/features/act:1": {}
-	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-azuretools.vscode-docker",
-				"github.vscode-github-actions"
-			]
+		"ghcr.io/dhoeric/features/act:1": {
+			"version": "latest"
 		}
-	}
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "docker --version",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-containers",
+                "github.copilot",
+                "github.vscode-github-actions",
+                "eamodio.gitlens",
+                "yzhang.markdown-all-in-one"
+            ]
+        }
+    }
 }
