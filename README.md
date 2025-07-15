@@ -14,7 +14,7 @@
 
 
 # ⌨️ [VS Code Tunnel][repo]
-VS Code Tunnel inside a Docker container. VS Code, or [Visual Studio Code][vscode], is an integrated development environment developed by Microsoft. This container allows you to create a secure development environment using Docker that you can access via VS Code's Remote Tunnels.
+VS Code Tunnel inside a Docker container. VS Code, or [Visual Studio Code][vscode], is an integrated development environment developed by Microsoft. This container allows you to create a secure development environment using Docker that you can access via VS Code's Remote Tunnels feature.
 
 ![code](https://github.com/user-attachments/assets/dc9b2f18-08a4-4202-9e21-34f45e4bf3f0)
 
@@ -65,7 +65,7 @@ docker logs code-tunnel
 ```
 
 ## Security
-This container can be accessed with Visual Studio Code's Remote Tunnels feature and a GitHub account. Unless you deploy this container in an insecure environment, it should be safe. Exposed ports in the container will go through Microsoft's reverse proxy to be accessible on the internet.
+This container can be accessed with Visual Studio Code's Remote Tunnels feature and a GitHub account. Unless you deploy this container in an insecure environment, it should be safe to use. Exposed ports in the container will go through Microsoft's reverse proxy to be accessible on the internet.
 
 ## Config
 Containers are configured using parameters passed at runtime (such as those above). Use these parameters to customize your deployment.
@@ -82,7 +82,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `--hostname vscode` | Hostname for the container. |
 
 ## Mods
-As mentioned before, this container is using a linuxserver.io base. You can use their mods to further customize your environment. With [universal package install][lsupi] you can install packages like rsync and Nginx or set up a [docker-in-docker][lsdnd] environment for isolated container development. Many Docker mods that are universal or made for code-tunnel can be used with this container. You can check out [this page][lsmods-list] for a list of mods.
+As mentioned before, this container is using a linuxserver.io base. You can use their mods to further customize your environment. With [universal package install][lsupi] you can install packages like rsync and Nginx or set up a [docker-in-docker][lsdnd] environment for isolated container development. Many Docker mods that are universal or made for linuxserver.io's code-server can be used with this container. You can check out [this page][lsmods-list] for a list of mods.
 
 ## Updating
 This image is updated monthly. To update the app, you'll need to pull the latest image and redeploy the container with your configuration. It's **not** recommended to update the app inside the container. Updating this way could cause issues with configurations and mods. If you get an update notification, you should ignore it and update the container manually.
