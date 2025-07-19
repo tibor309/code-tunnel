@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-in-docker
 {
 	"name": "VS Code Tunnel",
-	"image": "mcr.microsoft.com/devcontainers/base:noble-ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "privileged": true,
 
 	"features": {
