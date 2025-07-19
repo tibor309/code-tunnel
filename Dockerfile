@@ -21,6 +21,9 @@ ENV LSIO_FIRST_PARTY=false
 # set default tunnel name
 ENV TUNNEL_NAME="code-tunnel"
 
+ENV VSCODE_CLI_DATA_DIR="/config/data"
+ENV VSCODE_AGENT_FOLDER="/config/data"
+
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
 
